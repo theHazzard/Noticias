@@ -1,5 +1,5 @@
 <?php
-   require_once "config/bbdd.php";
+   require_once "includes/include.php";
 	define("MODULE_PATH","modulos/");//"define" es para crear una constante en php, el primer parametro es el nom de la const y el seg el valor al cual hace referencia
 	define("TEMPLATE_PATH","view/");
 	

@@ -1,6 +1,7 @@
 <?php
-	$consulta = "select * from noticias";
-	$query= mysql_query($consulta);
+	$query= $bd->setQuery('SELECT * FROM articulo');
+	$noticias = $bd->loadObjectList();
+
 ?>	
 	<div id="body">
 		<table border="1">
@@ -10,13 +11,17 @@
 				<th>Fecha y Hora</th>
 				<th>&nbsp;</th>
 			</tr>
-			<?php while($row=mysql_fetch_array($query,MYSQL_ASSOC)): ?>
-			<tr>
-				<td><?php echo $row["titulo"]; ?></td>
-				<td><?php echo substr($row["contenido"],0,50); ?></td>
-				<td><?php echo $row["fecha"]."|".$row["hora"]; ?></td>
-				<td></td>
-			</tr>
-			<?php endwhile; ?>
+			<?php 
+				foreach ($noticias as $n => $noticia) {
+					echo '<tr>';
+					echo '<td>' . $noticia->titulo . '</td>';
+					echo '<td>' . $noticia->contenido . '</td>';
+					echo '<td>' . $noticia->fecha."|".$noticia->hora . '</td>';
+					echo '<td></td>';
+					echo '</tr>';
+				 	echo '<a href="noticia' .  . ' "></a>'
+				};
+			?>
+
 		</table>
 	</div>
